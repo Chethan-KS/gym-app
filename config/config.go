@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/gofiber/fiber/v2"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 
@@ -322,4 +323,11 @@ func getEnvOrPanic(env string) string {
 
 func GetConfig() *Configurations {
 	return configs
+}
+
+func GetLoginDetails(c *fiber.Ctx) error {
+
+	// TO DO: implement login details fetch logic
+	log.Info().Msg("GetLoginDetails called")
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "Login successful"})
 }

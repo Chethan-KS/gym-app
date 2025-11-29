@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/Chetuks/gym-app/config"
-	"github.com/Chetuks/gym-app/gym/handler"
 	swagger "github.com/arsmn/fiber-swagger/v2"
 
 	"github.com/gofiber/fiber/v2"
@@ -64,9 +63,9 @@ func setupFiberApp(configs *config.Configurations) *fiber.App {
 	})
 	fiberApp.Get("/swagger/*", swagger.HandlerDefault)
 	{
-		api := fiberApp.Group("/api/dlnk")
+		api := fiberApp.Group("/api/gym")
 		{
-			api.Post("/login/v1", handler.GetLoginDetails)
+			api.Post("/login/v1", config.GetLoginDetails)
 		}
 	}
 	return fiberApp
